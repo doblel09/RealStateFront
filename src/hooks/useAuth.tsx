@@ -2,15 +2,14 @@ import { useContext, createContext, useState, useEffect } from 'react';
 import { axiosInstance } from "@/lib/axios";
 import {useNavigate} from "react-router-dom";
 
-interface User {
+export type User = {
   id: string;
   firstName: string;
   lastName: string;
   phoneNumber: string;
   cedula: string;
   email: string;
-  name: string;
-  picture: string;
+  profilePicture: string;
 }
 
 type AuthContextType = {
@@ -20,6 +19,7 @@ type AuthContextType = {
   isLoading: boolean;
   login: (email: string, password: string) => Promise<LoginResult>;
   logout: () => void;
+  updateLocalUser: (updatedUser: User) => void;
 }
 
 type AuthenticationRequest ={
@@ -62,9 +62,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             firstName: response.data.firstName,
             lastName: response.data.lastName,
             email: response.data.email,
-            name: response.data.name,
-            picture: response.data.picture,
-            phoneNumber: response.data.phone,
+            profilePicture: response.data.profilePicture,
+            phoneNumber: response.data.phoneNumber,
             cedula: response.data.cedula
           };
           setUser(userData);
@@ -90,8 +89,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           phoneNumber: response.data.phoneNumber,
           cedula: response.data.cedula,
           email: response.data.email,
-          name: response.data.name,
-          picture: response.data.picture
+          profilePicture: response.data.profilePicture
         };
         setUser(userData);
         setRoles(response.data.roles);

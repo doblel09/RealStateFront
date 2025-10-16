@@ -1,3 +1,5 @@
+import type { User } from "@/hooks/useAuth";
+
 
 export type SaleTypeStore = {
     isLoading: boolean,
@@ -189,5 +191,5 @@ export type UserType = {
 export type UserStore = {
     isLoading: boolean;
     error: string | null;
-    updateUser: (form: FormData) => Promise<void>;
+    updateUser: (form: FormData) => Promise<User>;
 }
