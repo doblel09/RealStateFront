@@ -115,7 +115,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       navigate("/login");
     };
 
-  return <AuthContext.Provider value={{ user, roles, token, isLoading, login, logout} as AuthContextType}>{children}</AuthContext.Provider>
+    const updateLocalUser = (updatedUser: User) => {
+      if (!user) return;
+      updatedUser.id = user.id;
+      setUser(updatedUser);
+      console.log("Local user updated:", updatedUser);
+    }
+
+  return <AuthContext.Provider value={{ user, roles, token, isLoading, login, logout, updateLocalUser } as AuthContextType}>{children}</AuthContext.Provider>
   };
 
 export const useAuth = () => {

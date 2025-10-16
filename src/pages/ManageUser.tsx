@@ -80,7 +80,7 @@ const ManageUser = () => {
       resolver: zodResolver(UserSchema) as Resolver<UserData>
     });
 
-  const onSubmit = (data: UserData) => {
+  const onSubmit = async (data: UserData) => {
     const formData = new FormData();
     try{
       formData.append("firstName", data.firstName);
@@ -100,8 +100,11 @@ const ManageUser = () => {
         formData.append("confirmPassword", data.confirmPassword);
       }
 
-      updateUser(formData);
-      navigate(-1);
+      const newUser = await updateUser(formData);
+      
+      auth?.updateLocalUser(newUser);
+      
+      navigate(auth?.roles?.includes("Agent") ? `/agent/${auth?.user?.id}` : `/profile`);
     }catch(error){
       console.error("Error preparing form data:", error);
     }
