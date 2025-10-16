@@ -17,8 +17,8 @@ const Header = () => {
   }, [roles]);
 
   const getProfilePicture = () => {
-  if (user?.picture) {
-    return import.meta.env.VITE_BACKEND_BASE_URL + user.picture;
+  if (user?.profilePicture) {
+    return import.meta.env.VITE_BACKEND_BASE_URL + user.profilePicture;
   }
   return PersonLogo;
 };
@@ -37,7 +37,7 @@ const Header = () => {
 
           <nav className="hidden md:flex">
         <ul className="flex gap-8">
-          {!roles || roles.includes("Agent") ? <li><Link to="/listings">My listings</Link></li> : null}
+          {roles && roles.includes("Agent") ? <li><Link to="/listings">My listings</Link></li> : null}
           {!roles || !roles.includes("Agent") ? (
             <>
             <li><Link to="/buy">Buy</Link></li>
