@@ -11,6 +11,7 @@ const Details = () => {
   const propertyId = searchParams.get("id");
   const { fetchPropertyById, property } = propertyStore();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const auth = useAuth();
   const roles = auth?.roles;
@@ -26,17 +27,21 @@ const Details = () => {
   return (
     property ? (
       <div className="container flex flex-col gap-5 max-w-[928px]">
-        <div className="w-full h-[400px] rounded-lg">
-          <ImageSlider images={property.images || []} />
+        <div className="w-full h-[400px] rounded-lg cursor-pointer hover:opacity-90" onClick={() => setIsModalOpen(true)}>
+          <ImageSlider
+            images={property.images}
+            currentIndex={currentImageIndex}
+            setCurrentIndex={setCurrentImageIndex}
+          />
         </div>
-        <button
-          onClick={() => setIsModalOpen(true)}
-          className=" bg-blue-600 text-white hover:bg-blue-700 cursor-pointer backdrop-blur-md font-medium py-4 rounded-lg shadow-md transition"
-        >
-          View Photos
-        </button>
         {property?.images?.length > 0 && (
-          <ImageModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} images={property?.images || []} />
+          <ImageModal
+            isModalOpen={isModalOpen}
+            setIsModalOpen={setIsModalOpen}
+            images={property?.images || []}
+            currentIndex={currentImageIndex}
+            setCurrentIndex={setCurrentImageIndex}
+          />
         )}
         <div>
           <div className="flex items-center justify-between">
