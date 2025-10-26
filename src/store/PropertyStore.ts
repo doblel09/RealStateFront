@@ -1,5 +1,5 @@
 import { axiosInstance } from "@/lib/axios";
-import type { PropertyStore } from "@/type/types";
+import type { PropertyStore } from "@/types/types";
 import type { AxiosError } from "axios";
 import { create } from "zustand";
 
@@ -96,7 +96,7 @@ export const propertyStore = create<PropertyStore>((set) => ({
         } catch (error) {
             const err = error as AxiosError<{ message: string }>;
             set({ error: err.response?.data.message || "Failed to fetch property." });
-            console.log(err);``
+            console.log(err);
         } finally {
             set({ isLoading: false });
         }

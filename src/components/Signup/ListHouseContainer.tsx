@@ -6,7 +6,7 @@ interface ListHouseContainerProps {
 
 const ListHouseContainer = ({ children }: ListHouseContainerProps) => {
   return (
-    <div className='flex flex-col gap-8 mt-6 md:gap-0'>
+    <div className='flex flex-col gap-8 mt-6 md:gap-6'>
       {children}
     </div>
   )

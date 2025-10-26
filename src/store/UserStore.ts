@@ -1,6 +1,6 @@
 import { axiosInstance } from "@/lib/axios";
 import type { AxiosError } from "axios";
-import type { UserStore } from "@/type/types";
+import type { UserStore } from "@/types/types";
 import type { User } from "@/hooks/useAuth";
 import { create } from "zustand";
 

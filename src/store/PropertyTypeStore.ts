@@ -1,5 +1,5 @@
 import { axiosInstance } from "@/lib/axios";
-import type { PropertyTypeStore, PropertytypeType} from "@/type/types";
+import type { PropertyTypeStore, PropertytypeType} from "@/types/types";
 import type { AxiosError } from "axios";
 import { create } from "zustand";
 

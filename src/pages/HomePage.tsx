@@ -13,7 +13,7 @@ function HomePage() {
   useTitle('Real State App - Home Page')
   return (
     <div className='w-full'>        
-      <h1 className="text-2xl font-bold">Homes for you</h1>
+      <h1 className="text-2xl font-bold mb-6">Homes for you</h1>
       <ListHouseContainer>
         {properties.map((property) => (
           <Property key={property.id} {...property} />

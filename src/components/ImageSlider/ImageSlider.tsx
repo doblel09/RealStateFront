@@ -16,6 +16,7 @@ const ImageSlider = ({ images }: { images: string[] }) => {
         backgroundImage: `url(${baseUrl+images[currentIndex]})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
+        zIndex: 999,
     };
 
     const leftArrowStyles: React.CSSProperties = {
@@ -47,7 +48,7 @@ const ImageSlider = ({ images }: { images: string[] }) => {
     };
 
   return (
-    <div style={sliderStyles}>
+    <div style={sliderStyles} >
         {images.length > 1 && (
           <>
             <div style={leftArrowStyles} onClick={handlePrev}>↼</div>

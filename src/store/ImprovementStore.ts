@@ -1,5 +1,5 @@
 import { axiosInstance } from "@/lib/axios";
-import type { ImprovementStore, ImprovementType } from "@/type/types";
+import type { ImprovementStore, ImprovementType } from "@/types/types";
 import type { AxiosError } from "axios";
 import { create } from "zustand";
 

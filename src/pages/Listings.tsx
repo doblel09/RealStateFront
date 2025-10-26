@@ -28,7 +28,7 @@ const Listings = () => {
       fetchAgentListings(user.id);
     }
 
-  }, [auth?.user?.id]);
+  }, [auth?.user?.id, auth?.roles , user, fetchAgentListings, navigate]);
 
   const handleDeleteListing = async (id: number) => {
     await deleteAgentListing(id);
@@ -60,8 +60,8 @@ const Listings = () => {
                 <span className="text-sm text-gray-600">{listing.offers.length} offers</span>
               </div>
             </div>
-            <div className="flex flex-wrap gap-2 text-xs">
               <button className="text-blue-600 hover:text-blue-800">View Offers</button>
+            <div className="flex flex-wrap gap-2 text-xs">
               <span className="text-gray-300">|</span>
               <Link to={`/manage-listing/${listing.id}`} className="text-blue-600 hover:text-blue-800">Edit</Link>
               <span className="text-gray-300">|</span>
@@ -97,11 +97,11 @@ const Listings = () => {
                   <td className="py-4 px-4 text-gray-900 text-center text-sm lg:text-base">{listing.offers.length}</td>
                   <td className="py-4 px-4">
                     <div className="flex flex-col lg:flex-row lg:space-x-2 space-y-1 lg:space-y-0 text-xs lg:text-sm">
-                      <button className="text-blue-600 hover:text-blue-800 text-left">View Offers</button>
+                      <button className="text-blue-600 hover:text-blue-800 text-left cursor-pointer">View Offers</button>
                       <span className="text-gray-300 hidden lg:inline">|</span>
                       <Link to={`/manage-listing/${listing.id}`} className="text-blue-600 hover:text-blue-800 text-left">Edit</Link>
                       <span className="text-gray-300 hidden lg:inline">|</span>
-                      <button onClick={() => handleDeleteListing(listing.id)} className="text-red-600 hover:text-red-800 text-left">Delete</button>
+                      <button onClick={() => handleDeleteListing(listing.id)} className="text-red-600 hover:text-red-800 text-left cursor-pointer">Delete</button>
                     </div>
                   </td>
                 </tr>
